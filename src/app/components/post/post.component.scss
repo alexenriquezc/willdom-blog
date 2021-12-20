@@ -1,0 +1,12 @@
+:host{
+  height: 100%;
+}
+
+::ng-deep .ql-editor {
+  height: 320px;
+}
+
+::ng-deep .ql-editor, .ql-blank {
+  font-size: large;
+  font-family: 'Courier New', Courier, monospace;
+}

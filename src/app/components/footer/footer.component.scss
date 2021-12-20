@@ -1,0 +1,12 @@
+@import 'variables';
+
+.footer {
+  align-items: center;
+  background-color: $footer-background;
+  display: flex;
+  flex-direction: column;
+  height: $footer-height;
+  min-height: 5em;
+  padding: $footer-padding;
+  // width: $footer-width;
+}

@@ -1,0 +1,48 @@
+
+@import 'variables';
+
+// :host{
+  .navbar {
+    justify-content: start;
+    align-items: center;
+    background-color: $navbar-background;
+    display: flex;
+    flex-direction: row;
+    height: $navbar-height;
+    justify-content: space-between;
+    padding: $navbar-padding;
+    width: $navbar-width;
+
+    span.brand, a.brand {
+      margin: 0;
+      padding: 0;
+      font-weight: $navbar-brand-font-weight;
+      font-size: $navbar-brand-font-size;
+      align-items: flex-start;
+    }
+
+    .items {
+      display: flex;
+      flex-direction: row;
+      justify-self: end;
+      justify-content: stretch;
+
+      li.new_post {
+        cursor: pointer;
+        text-decoration: none;
+        list-style: none;
+        margin: 0 5px;
+        border: none !important;
+      }
+    }
+    .items :last-child {
+      margin: 0 !important;
+    }
+  }
+
+  @media only screen and (min-width: 40em){
+    .navbar {
+      padding: 0 $margin;
+    }
+  }
+// }

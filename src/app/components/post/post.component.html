@@ -1,0 +1,53 @@
+<div class="w-full h-full rounded overflow-hidden shadow-lg bg-white">
+  <form class="px-6 py-4 flex flex-col" [formGroup]="newPostForm">
+    <label
+    class="w-64 flex flex-col items-center px-3 py-4 bg-white rounded-md shadow-md tracking-wide uppercase border border-blue cursor-pointer">
+    <i class="fas fa-cloud-upload-alt fa-3x"></i>
+    <span class="mt-2 text-sm leading-normal">Add Cover Image</span>
+    <input type='file' class="hidden" (change)="loadImage($event)" formControlName="image"/>
+  </label>
+
+
+  <div class="mb-4">
+    <input
+    type="text"
+    class="
+    w-full
+    placeholder:text-gray-300
+    text-5xl
+    border-none
+    appearance-none
+    rounded-sm
+    leading-tight
+    outline-none
+    focus:outline-none
+    "
+    formControlName="title"
+    placeholder="New post title..."
+    />
+  </div>
+  <div class="mb-4">
+    <quill-editor formControlName="content"></quill-editor>
+  </div>
+  <!-- </div> -->
+  <div class="mt-2">
+    <input
+    type="submit"
+    (click)="publish($event)"
+    value="Publish"
+    class="
+    cursor-pointer
+    py-2
+    px-4
+    border border-transparent
+    shadow-sm
+    text-sm
+    font-medium
+    rounded-md
+    text-white
+    bg-slate-900
+    "
+    />
+  </div>
+</form>
+</div>

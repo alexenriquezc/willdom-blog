@@ -1,0 +1,8 @@
+<div class="w-full rounded bg-white px-12 py-4 h-full">
+  <h1 class="w-full text-5xl">{{ post.title }}</h1>
+  <quill-view-html
+    class="w-full"
+    [content]="post.content"
+    theme="bubble"
+  ></quill-view-html>
+</div>

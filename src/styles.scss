@@ -1,1 +1,62 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@import '~quill/dist/quill.core.css';
+@import '~quill/dist/quill.bubble.css';
+@import '~quill/dist/quill.snow.css';
+
+
+@import 'variables';
+
+
+html, body {
+  background-color: $background;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 1em;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  // overflow-x: hidden;
+}
+
+app-root {
+  height: 100%;
+  width: 100%;
+}
+
+// :host{
+//   height: 100%;
+//   width: 100%;
+
+// }
+
+
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  // align-items: stretch;
+  // flex-wrap: wrap;
+  height: inherit;
+}
+
+
+.timeline {
+  // flex: 1;
+  // column-gap: 5em;
+  align-items: center;
+  margin: 2em;
+  width: calc(100% - (2em*2));
+  flex-grow: 1;
+}
+
+@media only screen and (min-width: 40em){
+  .timeline {
+    // height: 100% !important;
+    margin: 2em $margin;
+    // min-height: 20em;
+    width: inherit;
+  }
+}

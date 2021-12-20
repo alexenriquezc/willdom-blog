@@ -1,0 +1,17 @@
+:host{
+  display: flex;
+  flex-direction: column;
+}
+
+timeline-item {
+  margin: 0.5em 0;
+}
+
+timeline-item:last-child{
+  margin: 0.5em 0 0 0;
+}
+
+.no-items {
+  text-align: center;
+  font-size: larger;
+}
