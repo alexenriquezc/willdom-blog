@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services';
-import { PagedResult, TimelineItem } from '../../models';
+import { TimelineItem } from '../../models';
 
 @Component({
   selector: 'app-home',
@@ -18,16 +18,35 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadPosts();
+    this.loadLocalPosts();
   }
 
-  private loadPosts() {
-    this.dataService.getLocalPosts().subscribe(result => {
+  private loadLocalPosts() {
+    this.dataService.getLocalPosts().subscribe((result) => {
       this.localPosts = result;
     });
+  }
 
-    this.dataService.getRemotePosts().subscribe(result => {
-      this.remotePosts = result.articles
+  private loadRemotePosts() {
+    this.dataService.getRemotePosts().subscribe((result) => {
+      this.remotePosts = result.articles;
     });
+  }
+
+  private loadRemotePlusPosts() {}
+
+  changeTab(tab: number) {
+    this.active_status = tab;
+    switch (tab) {
+      case 1:
+        this.loadLocalPosts();
+        break;
+      case 2:
+        this.loadRemotePosts();
+        break;
+      case 3:
+        this.loadRemotePlusPosts();
+        break;
+    }
   }
 }

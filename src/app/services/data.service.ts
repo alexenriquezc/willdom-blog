@@ -23,17 +23,6 @@ export class DataService {
     }
   }
 
-  // getLastPostId(): number {
-  //   const json = localStorage.getItem('posts');
-
-  //   if (json !=null) {
-  //     const localPosts: Array<TimelineItem> = JSON.parse(json);
-  //     return localPosts.sort((a,b) => b.id - a.id)[0].id;
-  //   } else {
-  //     return 0;
-  //   }
-  // }
-
   getLocalPosts(): Observable<Array<TimelineItem>> {
     const json = localStorage.getItem('posts');
     let localPosts: Array<TimelineItem>;
@@ -54,7 +43,7 @@ export class DataService {
       const localPosts: Array<TimelineItem> = JSON.parse(json);
       return localPosts?.find(x => x.title == title) as TimelineItem;
     } else {
-      return {content: '', description: '', title: ''};
+      return {content: '', title: ''};
     }
   }
 

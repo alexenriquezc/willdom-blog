@@ -30,16 +30,16 @@ export class PostComponent implements OnInit {
   publish(e: Event): void {
     e.preventDefault();
 
-    const date = new Date();
+    // const date = new Date();
     const post: TimelineItem = {
-      id: this.dataService.getLastPostId() + 1,
+      // id: this.dataService.getLastPostId() + 1,
       title: this.newPostForm.get('title')?.value,
       content: this.newPostForm.get('content')?.value,
-      publishedAt: `${date.getFullYear()}-${
-        date.getMonth() + 1
-      }-${date.getDate()}`,
+      // publishedAt: `${date.getFullYear()}-${
+      //   date.getMonth() + 1
+      // }-${date.getDate()}`,
+      publishedAt: new Date(),
       image: this.coverImage,
-      likes: 0
     };
 
     this.dataService.savePost(post);

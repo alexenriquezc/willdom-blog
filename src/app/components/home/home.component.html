@@ -1,22 +1,14 @@
-<div class="sm:hidden relative w-11/12 mx-auto bg-white rounded">
-  <div class="absolute inset-0 m-auto mr-4 z-0 w-6 h-6">
-      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-selector" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#A0AEC0" fill="none" stroke-linecap="round" stroke-linejoin="round">
-          <path stroke="none" d="M0 0h24v24H0z" />
-          <polyline points="8 9 12 5 16 9" />
-          <polyline points="16 15 12 19 8 15" />
-      </svg>
-  </div>
+<div class="sm:hidden relative w-full bg-white rounded">
+  <div class="absolute inset-0 m-auto mr-4 z-0 w-6 h-6"></div>
   <select aria-label="Selected tab" class="form-select block w-full p-3 border border-gray-300 rounded text-gray-600 appearance-none bg-transparent relative z-10">
-      <option class="text-sm text-gray-600">inactive</option>
-      <option class="text-sm text-gray-600">inactive</option>
-      <option selected class="text-sm text-gray-600">Active</option>
-      <option class="text-sm text-gray-600">inactive</option>
-      <option class="text-sm text-gray-600">inactive</option>
+      <option (click)="changeTab(1)" [selected]="active_status ==1" class="text-sm text-gray-600">Local</option>
+      <option (click)="changeTab(2)" [selected]="active_status ==2" class="text-sm text-gray-600">Remote</option>
+      <option (click)="changeTab(3)" [selected]="active_status ==3" class="text-sm text-gray-600">Remote+</option>
   </select>
 </div>
 <div class="xl:w-full xl:mx-0 h-12 hidden sm:block bg-white shadow rounded">
   <ul class="flex border-b px-5">
-      <li (click)="this.active_status = 1" [ngClass]="active_status == 1 ? 'text-sm border-indigo-700 pt-3 rounded-t text-indigo-700 mr-12' : 'text-sm text-gray-600 py-3 flex items-center mr-12 hover:text-indigo-700 cursor-pointer'">
+      <li (click)="changeTab(1)" [ngClass]="active_status == 1 ? 'text-sm border-indigo-700 pt-3 rounded-t text-indigo-700 mr-12' : 'text-sm text-gray-600 py-3 flex items-center mr-12 hover:text-indigo-700 cursor-pointer'">
           <div class="flex items-center mb-3">
               <span>
                   <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -30,7 +22,7 @@
           </div>
           <div *ngIf="active_status == 1" class="w-full h-1 bg-indigo-700 rounded-t-md"></div>
         </li>
-      <li (click)="this.active_status = 2" [ngClass]="active_status == 2 ? 'text-sm border-indigo-700 pt-3 rounded-t text-indigo-700 mr-12' : 'text-sm text-gray-600 py-3 flex items-center mr-12 hover:text-indigo-700 cursor-pointer'">
+      <li (click)="changeTab(2)" [ngClass]="active_status == 2 ? 'text-sm border-indigo-700 pt-3 rounded-t text-indigo-700 mr-12' : 'text-sm text-gray-600 py-3 flex items-center mr-12 hover:text-indigo-700 cursor-pointer'">
           <div class="flex items-center mb-3">
               <span>
                   <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -44,7 +36,7 @@
           </div>
           <div *ngIf="active_status == 2" class="w-full h-1 bg-indigo-700 rounded-t-md"></div>
       </li>
-      <li (click)="this.active_status = 3" [ngClass]="active_status == 3 ? 'text-sm border-indigo-700 pt-3 rounded-t text-indigo-700 mr-12' : 'text-sm text-gray-600 py-3 flex items-center mr-12 hover:text-indigo-700 cursor-pointer'">
+      <li (click)="changeTab(3)" [ngClass]="active_status == 3 ? 'text-sm border-indigo-700 pt-3 rounded-t text-indigo-700 mr-12' : 'text-sm text-gray-600 py-3 flex items-center mr-12 hover:text-indigo-700 cursor-pointer'">
           <div class="flex items-center mb-3">
               <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" />
@@ -65,14 +57,9 @@
     </ng-container>
 
     <ng-template #itemsTemplate>
-      <timeline-item class="md:w-full lg:w-6/12 flex md:self-center" *ngFor="let post of localPosts" [post]="post">
+      <!-- class="md:w-full lg:w-6/12 flex md:self-center" -->
+      <timeline-item  *ngFor="let post of localPosts" [post]="post">
       </timeline-item>
-    </ng-template>
-
-    <ng-template #noItems>
-      <div class="no-items">
-        No items yet
-      </div>
     </ng-template>
   </div>
 
@@ -82,14 +69,22 @@
     </ng-container>
 
     <ng-template #itemsTemplate>
-      <timeline-item class="md:w-full lg:w-6/12 flex md:self-center" *ngFor="let post of remotePosts" [post]="post">
+      <!-- class="md:w-full lg:w-6/12 flex md:self-center" -->
+      <timeline-item *ngFor="let post of remotePosts" [post]="post">
       </timeline-item>
     </ng-template>
 
-    <ng-template #noItems>
+    <!-- <ng-template #noItems>
       <div class="no-items">
         No items yet
       </div>
-    </ng-template>
+    </ng-template> -->
   </div>
 </div>
+
+
+<ng-template #noItems>
+  <div class="no-items bg-white py-2 mt-4 h-56 flex flex-col justify-center">
+    <span>No items yet</span>
+  </div>
+</ng-template>

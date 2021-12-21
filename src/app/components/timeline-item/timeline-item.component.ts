@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
+import { StateService } from '../../services';
 import { TimelineItem } from '../../models';
 
 @Component({
@@ -9,16 +10,17 @@ import { TimelineItem } from '../../models';
   styleUrls: ['./timeline-item.component.scss'],
 })
 export class TimelineItemComponent implements OnInit {
-  @Input() post: TimelineItem = {title:'', content: '', description: ''};
+  @Input() post: TimelineItem = {title:'', content: ''};
   faLike = faThumbsUp
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private stateService: StateService) {}
 
   ngOnInit(): void {}
 
-  viewPost(searchPattern: string | undefined): void {
-    if (searchPattern !== undefined) {
-      this.router.navigate([`/post`, searchPattern]);
+  viewPost(post: TimelineItem): void {
+    if (post !== undefined) {
+      this.router.navigate([`/post/view`]);
+      this.stateService.currentPost = post;
     }
   }
 

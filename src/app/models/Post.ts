@@ -1,7 +1,7 @@
 export interface TimelineItem {
   title: string;
-  description: string;
   content: string;
+  description?: string;
   url?: string;
   image?: string;
   publishedAt?: Date;

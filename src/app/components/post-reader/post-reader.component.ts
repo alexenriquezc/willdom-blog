@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { TimelineItem } from 'src/app/models';
-import { DataService } from 'src/app/services';
+import { StateService } from '../../services';
 
 @Component({
   selector: 'app-post-reader',
@@ -10,14 +9,16 @@ import { DataService } from 'src/app/services';
 })
 export class PostReaderComponent implements OnInit {
 
-  private id: number;
-  post: TimelineItem = {content: ''};
+  post: TimelineItem = {content: '', title: ''};
 
-  constructor(private routerActivated: ActivatedRoute, private dataService: DataService) {
-    this.id =this.routerActivated.snapshot.params['id'];
+  constructor(private stateService: StateService) {
+
    }
 
   ngOnInit(): void {
-    this.post = this.dataService.getLocalPost(this.id);
+    if (this.stateService.currentPost) {
+      this.post = this.stateService.currentPost;
+    }
+    this.stateService.currentPost = undefined;
   }
 }

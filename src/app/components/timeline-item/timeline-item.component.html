@@ -1,47 +1,28 @@
-<div class="w-full rounded overflow-hidden shadow-lg bg-white">
-  <img
-    *ngIf="post.image"
-    class="w-full max-h-64 img"
-    (click)="viewPost(post.title)"
-    [attr.src]="post.image"
-    alt=""
-  />
-  <div class="px-6 py-4">
-    <span class="text-gray-500 text-sm">{{ post?.publishedAt }}</span>
-    <h1 class="title font-bold text-2xl mb-2" (click)="viewPost(post.title)">
-      {{ post?.title }}
-    </h1>
-    <!-- <p class="text-gray-700 text-base">
-      <span
-        *ngFor="let tag of post?.tags"
-        class="
-          inline-block
-          bg-gray-200
-          rounded-full
-          px-3
-          py-1
-          text-sm
-          font-semibold
-          text-gray-700
-          mr-2
-          mb-2
-        "
-        >{{ tag }}</span
-      >
-    </p> -->
-    <!-- <div
-      class="
-        w-fit
-        flex flex-row
-        items-center
-        py-4
-        tracking-wide
-        cursor-pointer
-      "
-      (click)="addLike(post)"
-    >
-      <fa-icon [icon]="faLike"></fa-icon>
-      <span  class="px-2">{{post.likes}} Reactions</span>
-  </div> -->
+<a (click)="viewPost(post)" class="w-full py-2 flex flex-col post">
+  <div
+    class="
+      h-fit
+      md:h-72
+      rounded
+      overflow-hidden
+      shadow-lg
+      grid grid-rows-1
+      gap-4
+      grid-cols-1
+      sm:grid-cols-2 sm:grid-rows-1
+      bg-white
+    "
+  >
+  <!-- row-start-2 md:row-start-1 -->
+    <div class="px-6 py-4 row-start-2 md:row-start-1">
+      <h1 class="title font-bold text-2xl mb-2">
+        {{ post?.title }}
+      </h1>
+      <p class="text-sm" *ngIf="post.description">{{ post.description }}</p>
+      <span class="text-gray-500 text-sm">{{
+        post?.publishedAt | date: "yyyy-MM-dd"
+      }}</span>
+    </div>
+    <img *ngIf="post.image" class="img w-full" [attr.src]="post.image" alt="" />
   </div>
-</div>
+</a>
