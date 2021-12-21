@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TimelineItem } from '../../models';
 import { DataService } from '../../services';
@@ -19,7 +19,7 @@ export class PostComponent implements OnInit {
     private dataService: DataService
   ) {
     this.newPostForm = this.builder.group({
-      title: new FormControl(),
+      title: new FormControl('', Validators.compose([Validators.required, Validators.maxLength(50)])),
       content: new FormControl(),
       image: new FormControl(),
     });
@@ -29,15 +29,9 @@ export class PostComponent implements OnInit {
 
   publish(e: Event): void {
     e.preventDefault();
-
-    // const date = new Date();
     const post: TimelineItem = {
-      // id: this.dataService.getLastPostId() + 1,
       title: this.newPostForm.get('title')?.value,
       content: this.newPostForm.get('content')?.value,
-      // publishedAt: `${date.getFullYear()}-${
-      //   date.getMonth() + 1
-      // }-${date.getDate()}`,
       publishedAt: new Date(),
       image: this.coverImage,
     };

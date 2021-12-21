@@ -44,9 +44,10 @@
     text-sm
     font-medium
     rounded-md
-    text-white
-    bg-slate-900
+
     "
+    [disabled]="!newPostForm.valid"
+   [ngClass]="!newPostForm.valid ? 'disabled' : 'text-white bg-slate-900'"
     />
   </div>
 </form>

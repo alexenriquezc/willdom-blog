@@ -1,5 +1,5 @@
 <div class="w-full rounded bg-white h-full flex flex-col">
-  <img class="img" [attr.src]="post.image"/>
+  <img *ngIf="post.image" class="img" [attr.src]="post.image"/>
   <div class="px-12 py-4">
     <h1 class="w-full text-5xl">{{ post.title }}</h1>
   <quill-view-html
