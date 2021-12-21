@@ -18,7 +18,6 @@ html, body {
   margin: 0;
   height: 100%;
   width: 100%;
-  // overflow-x: hidden;
 }
 
 app-root {
@@ -26,26 +25,14 @@ app-root {
   width: 100%;
 }
 
-// :host{
-//   height: 100%;
-//   width: 100%;
-
-// }
-
-
-
 .app-container {
   display: flex;
   flex-direction: column;
-  // align-items: stretch;
-  // flex-wrap: wrap;
   height: inherit;
 }
 
 
 .timeline {
-  // flex: 1;
-  // column-gap: 5em;
   align-items: center;
   margin: 2em;
   width: calc(100% - (2em*2));
@@ -54,9 +41,7 @@ app-root {
 
 @media only screen and (min-width: 40em){
   .timeline {
-    // height: 100% !important;
     margin: 2em $margin;
-    // min-height: 20em;
     width: inherit;
   }
 }

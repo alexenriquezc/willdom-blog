@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TimelineItem } from 'src/app/models';
+import { Router } from '@angular/router';
+import { TimelineItem } from '../../models';
 import { StateService } from '../../services';
 
 @Component({
@@ -11,13 +12,14 @@ export class PostReaderComponent implements OnInit {
 
   post: TimelineItem = {content: '', title: ''};
 
-  constructor(private stateService: StateService) {
-
+  constructor(private stateService: StateService, private router: Router) {
    }
 
   ngOnInit(): void {
     if (this.stateService.currentPost) {
       this.post = this.stateService.currentPost;
+    } else {
+      this.router.navigate(['/']);
     }
     this.stateService.currentPost = undefined;
   }
